@@ -8,7 +8,7 @@
 import Foundation
 
 public struct PromiseKitClosures {
-    static func ResultBlock<T>(#fulfill: T -> Void, reject: NSError -> Void) -> (T, NSError?) -> () {
+    public static func ResultBlock<T>(#fulfill: T -> Void, reject: NSError -> Void) -> (T, NSError?) -> () {
         return { (result: T, error: NSError?) in
             if let error = error {
                 reject(error)
@@ -18,7 +18,7 @@ public struct PromiseKitClosures {
         }
     }
 
-    static func OptionalResultBlock<T>(#fulfill: T -> Void, reject: NSError -> Void) -> (T?, NSError?) -> () {
+    public static func OptionalResultBlock<T>(#fulfill: T -> Void, reject: NSError -> Void) -> (T?, NSError?) -> () {
         return { (result: T?, error: NSError?) in
             if let error = error {
                 reject(error)
@@ -28,7 +28,7 @@ public struct PromiseKitClosures {
         }
     }
 
-    static func PassthroughBlock<T>(#fulfill: T -> Void, reject: NSError -> Void, passthrough: T) -> (NSError?) -> () {
+    public static func PassthroughBlock<T>(#fulfill: T -> Void, reject: NSError -> Void, passthrough: T) -> (NSError?) -> () {
         return { (error: NSError?) in
             if let error = error {
                 reject(error)
