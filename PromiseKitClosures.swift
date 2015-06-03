@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct LYRCLientPromiseKitClosures {
+public struct PromiseKitClosures {
     static func ResultBlock<T>(#fulfill: T -> Void, reject: NSError -> Void) -> (T, NSError?) -> () {
         return { (result: T, error: NSError?) in
             if let error = error {
