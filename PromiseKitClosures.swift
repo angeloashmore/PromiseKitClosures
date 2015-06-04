@@ -28,12 +28,12 @@ public struct PromiseKitClosures {
         }
     }
 
-    public static func ErrorBlock<T>(#fulfill: T -> Void, reject: NSError -> Void, passthrough: T? = nil) -> (NSError?) -> () {
+    public static func ErrorBlock<T>(#fulfill: T -> Void, reject: NSError -> Void, passthrough: T) -> (NSError?) -> () {
         return { (error: NSError?) in
             if let error = error {
                 reject(error)
             } else {
-                fulfill(passthrough?)
+                fulfill(passthrough)
             }
         }
     }
