@@ -28,8 +28,8 @@ public struct PromiseKitClosures {
         }
     }
 
-    public static func PassthroughBlock<T>(#fulfill: T -> Void, reject: NSError -> Void, passthrough: T) -> (NSError?) -> () {
-        return { (error: NSError?) in
+    public static func PassthroughBlock<T>(#fulfill: T -> Void, reject: NSError -> Void, passthrough: T) -> (T, NSError?) -> () {
+        return { (result: T, error: NSError?) in
             if let error = error {
                 reject(error)
             } else {
